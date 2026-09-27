@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { LucideIcon } from "lucide-react";
+import Image, { type StaticImageData } from "next/image";
 
 interface BlogCardProps {
   category: string;
@@ -8,58 +8,27 @@ interface BlogCardProps {
   title: string;
   excerpt: string;
   href: string;
-  icon: LucideIcon;
-  accentColor?: string;
+  image: StaticImageData;
+  imageAlt: string;
 }
 
-export default function BlogCard({ category, date, readTime, title, excerpt, href, icon: Icon, accentColor = "#E7F2F4" }: BlogCardProps) {
+export default function BlogCard({ category, date, readTime, title, excerpt, href, image, imageAlt }: BlogCardProps) {
   return (
-    <div className="card" style={{ display: "flex", flexDirection: "column" }}>
-      {/* Colored image placeholder */}
-      <div
-        style={{
-          height: 160,
-          borderRadius: 8,
-          background: `linear-gradient(135deg, ${accentColor} 0%, #fff 140%)`,
-          marginBottom: 18,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          position: "relative",
-          overflow: "hidden",
-        }}
-      >
-        <div
-          aria-hidden
-          style={{
-            position: "absolute",
-            right: -30,
-            bottom: -30,
-            width: 140,
-            height: 140,
-            borderRadius: "50%",
-            border: "1px solid rgba(15,148,136,0.15)",
-          }}
+    <div className="card blog-card" style={{ display: "flex", flexDirection: "column", height: "100%" }}>
+      {/* Cover photo */}
+      <div className="blog-card-media">
+        <Image
+          src={image}
+          alt={imageAlt}
+          placeholder="blur"
+          fill
+          sizes="(max-width: 760px) 100vw, 360px"
+          style={{ objectFit: "cover" }}
         />
-        <span
-          style={{
-            width: 56,
-            height: 56,
-            borderRadius: 12,
-            background: "#fff",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            color: "var(--color-primary)",
-            boxShadow: "0 8px 20px -12px rgba(16,24,38,0.25)",
-          }}
-        >
-          <Icon size={26} strokeWidth={1.7} aria-hidden />
-        </span>
       </div>
 
       {/* Meta */}
-      <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 10 }}>
+      <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 10, flexWrap: "wrap" }}>
         <span className="badge-primary" style={{ fontSize: 11 }}>
           {category}
         </span>

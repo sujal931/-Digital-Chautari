@@ -1,14 +1,31 @@
+import Image, { type StaticImageData } from "next/image";
+
 interface DarkBannerProps {
   eyebrow?: string;
   title: string;
   subtitle?: string;
+  bgImage?: StaticImageData;
   children: React.ReactNode;
 }
 
-export default function DarkBanner({ eyebrow, title, subtitle, children }: DarkBannerProps) {
+export default function DarkBanner({ eyebrow, title, subtitle, bgImage, children }: DarkBannerProps) {
   return (
-    <section className="section-dark section-py">
-      <div className="container-site">
+    <section className={`section-dark section-py${bgImage ? " section-photo" : ""}`}>
+      {bgImage && (
+        <>
+          <Image
+            src={bgImage}
+            alt=""
+            aria-hidden
+            fill
+            placeholder="blur"
+            sizes="100vw"
+            className="section-photo-img"
+          />
+          <div className="section-photo-overlay" aria-hidden />
+        </>
+      )}
+      <div className="container-site" style={{ position: "relative", zIndex: 1 }}>
         {eyebrow && (
           <div style={{ textAlign: "center", marginBottom: 8 }}>
             <span className="pill-eyebrow-gold" style={{ display: "inline-flex" }}>

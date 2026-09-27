@@ -1,5 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
+import heroTeam from "@/public/images/hero-team.jpg";
+import priyaPhoto from "@/public/images/testimonials/priya-maharjan.jpg";
+import bikashPhoto from "@/public/images/testimonials/bikash-thapa.jpg";
+import sunitaPhoto from "@/public/images/testimonials/sunita-rana.jpg";
+import seoCover from "@/public/images/blog/seo-analytics.jpg";
+import videoCover from "@/public/images/blog/video-editing.jpg";
+import physioCover from "@/public/images/blog/physiotherapy.jpg";
+import kathmanduBg from "@/public/images/backgrounds/kathmandu-aerial.jpg";
+import processBg from "@/public/images/backgrounds/process-planning.jpg";
 import StatBar from "@/components/StatBar";
 import DarkBanner from "@/components/DarkBanner";
 import Card from "@/components/Card";
@@ -10,7 +20,7 @@ import {
   Rocket, Package, Users, BadgeCheck, TrendingUp, Palette, Cpu, Handshake, Check,
   Megaphone, Clapperboard, CodeXml, PenTool, Briefcase, Smile, Eye, RefreshCw,
   Leaf, HeartPulse, Stethoscope, ShoppingCart, Building2, GraduationCap, Plane,
-  Newspaper, Search, Lightbulb, ChartColumn, Film,
+  Newspaper, Search, Lightbulb,
 } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -25,41 +35,55 @@ export default function HomePage() {
       {/* ── 1. Hero ─────────────────────────────────────────────────── */}
       <section className="hero-bg hero-py">
         <div className="container-site">
-          <div style={{ maxWidth: 720 }}>
-            <div className="pill-eyebrow" style={{ display: "inline-flex", marginBottom: 20 }}>
-              <Rocket aria-hidden /> Welcome to Digital Chautari
-            </div>
-            <h1 className="h1" style={{ marginBottom: 20 }}>
-              We build{" "}
-              <span className="gradient-text">digital bridges</span>
-              <br />
-              between ideas and impact
-            </h1>
-            <p className="body-md" style={{ fontSize: 17, marginBottom: 36, maxWidth: 620 }}>
-              Digital Chautari is a creative technology company based in Kathmandu, Nepal. We blend
-              strategic digital marketing, compelling content creation, and innovative health-tech
-              software to help brands grow and communities thrive.
-            </p>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: 12, marginBottom: 52 }}>
-              <Link href="/services" className="btn btn-primary">
-                Explore Services →
-              </Link>
-              <Link href="/products" className="btn btn-ghost">
-                View Products
-              </Link>
+          <div className="hero-split">
+            <div style={{ maxWidth: 620 }}>
+              <div className="pill-eyebrow" style={{ display: "inline-flex", marginBottom: 20 }}>
+                <Rocket aria-hidden /> Welcome to Digital Chautari
+              </div>
+              <h1 className="h1" style={{ marginBottom: 20 }}>
+                We build{" "}
+                <span className="gradient-text">digital bridges</span>
+                <br />
+                between ideas and impact
+              </h1>
+              <p className="body-md" style={{ fontSize: 17, marginBottom: 36 }}>
+                Digital Chautari is a creative technology company based in Kathmandu, Nepal. We blend
+                strategic digital marketing, compelling content creation, and innovative health-tech
+                software to help brands grow and communities thrive.
+              </p>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: 12 }}>
+                <Link href="/services" className="btn btn-primary">
+                  Explore Services →
+                </Link>
+                <Link href="/products" className="btn btn-ghost">
+                  View Products
+                </Link>
+              </div>
             </div>
 
-            {/* Stat Bar */}
-            <Reveal>
-              <StatBar
-                stats={[
-                  { icon: Package, number: "3", label: "Products", chipClass: "chip-teal" },
-                  { icon: Users, number: "6+", label: "Team Members", chipClass: "chip-mint" },
-                  { icon: BadgeCheck, number: "100%", label: "Commitment", chipClass: "chip-gold" },
-                ]}
+            {/* Hero photo */}
+            <div className="hero-photo">
+              <Image
+                src={heroTeam}
+                alt="The Digital Chautari team planning a campaign around a whiteboard of sticky notes"
+                placeholder="blur"
+                preload
+                sizes="(max-width: 760px) 100vw, 480px"
+                style={{ width: "100%", height: "100%", objectFit: "cover" }}
               />
-            </Reveal>
+            </div>
           </div>
+
+          {/* Stat Bar */}
+          <Reveal style={{ marginTop: 48 }}>
+            <StatBar
+              stats={[
+                { icon: Package, number: "3", label: "Products", chipClass: "chip-teal" },
+                { icon: Users, number: "6+", label: "Team Members", chipClass: "chip-mint" },
+                { icon: BadgeCheck, number: "100%", label: "Commitment", chipClass: "chip-gold" },
+              ]}
+            />
+          </Reveal>
         </div>
       </section>
 
@@ -149,7 +173,7 @@ export default function HomePage() {
       </section>
 
       {/* ── 4. Dark Stats Banner ─────────────────────────────────────── */}
-      <DarkBanner eyebrow="By the Numbers" title="Results that speak for themselves">
+      <DarkBanner eyebrow="By the Numbers" title="Results that speak for themselves" bgImage={kathmanduBg}>
         <div className="grid-4">
           {[
             { icon: Briefcase, number: "250+", label: "Projects Delivered" },
@@ -159,12 +183,11 @@ export default function HomePage() {
           ].map(({ icon: Icon, ...stat }, i) => (
             <Reveal key={stat.label} delay={i * 70}>
               <div
+                className="glass-tile"
                 style={{
                   textAlign: "center",
                   padding: "28px 20px",
-                  background: "rgba(255,255,255,0.04)",
                   borderRadius: "var(--radius-card)",
-                  border: "1px solid var(--color-navy-border)",
                 }}
               >
                 <span className="chip chip-dark-gold" style={{ margin: "0 auto 14px" }}>
@@ -284,7 +307,7 @@ export default function HomePage() {
       </section>
 
       {/* ── 7. Dark Process ─────────────────────────────────────────── */}
-      <DarkBanner eyebrow="How We Work" title="Our 4-step process">
+      <DarkBanner eyebrow="How We Work" title="Our 4-step process" bgImage={processBg}>
         <div className="grid-4">
           {[
             { num: "01", icon: Search, title: "Discover", body: "We deep-dive into your brand, audience, and competitive landscape to uncover real opportunities." },
@@ -331,21 +354,24 @@ export default function HomePage() {
                 name: "Priya Maharjan",
                 title: "Founder",
                 company: "Himalayan Wellness Co.",
+                photo: priyaPhoto,
               },
               {
                 quote: "The content team at One Studio produced video content that outperformed everything we had done before. Our reel views jumped to 200K+ in the first week. Absolutely worth every paisa.",
                 name: "Bikash Thapa",
                 title: "Marketing Director",
                 company: "Yeti Apparel",
+                photo: bikashPhoto,
               },
               {
                 quote: "Physio@Home has been a revelation for our clinic. We now serve patients across Kathmandu valley with zero scheduling friction. The platform is intuitive, reliable, and our physiotherapists love it.",
                 name: "Dr. Sunita Rana",
                 title: "Chief Physiotherapist",
                 company: "NepaPhysio Centre",
+                photo: sunitaPhoto,
               },
             ].map((t, i) => (
-              <Reveal key={t.name} delay={i * 80}>
+              <Reveal key={t.name} delay={i * 80} style={{ height: "100%" }}>
                 <TestimonialCard {...t} />
               </Reveal>
             ))}
@@ -372,8 +398,8 @@ export default function HomePage() {
                 title: "How Nepali SMEs Can Win at SEO in 2025",
                 excerpt: "Local SEO is the single highest-ROI channel for small businesses in Nepal. Here's a step-by-step playbook any founder can execute in a weekend.",
                 href: "#",
-                icon: ChartColumn,
-                accentColor: "#E7F2F4",
+                image: seoCover,
+                imageAlt: "Laptop showing a website analytics dashboard",
               },
               {
                 category: "Content Strategy",
@@ -382,8 +408,8 @@ export default function HomePage() {
                 title: "Short-Form Video: The Blueprint That Scaled Our Clients to 1M Views",
                 excerpt: "We broke down 200 of our best-performing videos to find the formula. Hook, middle-frame, CTA — here's exactly what works in the Nepal market.",
                 href: "#",
-                icon: Film,
-                accentColor: "#FDF1DE",
+                image: videoCover,
+                imageAlt: "Video editing timeline on a monitor",
               },
               {
                 category: "Health-Tech",
@@ -392,11 +418,11 @@ export default function HomePage() {
                 title: "Physio@Home: Building Nepal's First At-Home Rehab Platform",
                 excerpt: "From idea to 100 registered physiotherapists in 60 days. A founder's account of validating a health-tech startup in a resource-constrained market.",
                 href: "#",
-                icon: HeartPulse,
-                accentColor: "#E7F5EA",
+                image: physioCover,
+                imageAlt: "Physiotherapist treating a patient's back",
               },
             ].map((post, i) => (
-              <Reveal key={post.title} delay={i * 80}>
+              <Reveal key={post.title} delay={i * 80} style={{ height: "100%" }}>
                 <BlogCard {...post} />
               </Reveal>
             ))}
