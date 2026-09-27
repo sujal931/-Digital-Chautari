@@ -583,7 +583,7 @@ textarea.input-field { resize: vertical; min-height: 120px; }
 /* ─── Inline icon helpers ────────────────────────────────────────────────── */
 .icon-inline { display: inline-flex; align-items: center; gap: 8px; }
 .pill-eyebrow svg, .pill-eyebrow-gold svg { width: 14px; height: 14px; stroke-width: 2; }
-.social-link svg { width: 15px; height: 15px; fill: currentColor; }
+.social-link svg { width: 20px; height: 20px; fill: currentColor; }
 .social-link:hover { border-color: var(--color-primary) !important; color: var(--color-primary) !important; }
 .footer-link:hover { color: var(--color-primary) !important; }
 

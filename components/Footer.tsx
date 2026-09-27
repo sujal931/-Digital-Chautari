@@ -42,33 +42,39 @@ export default function Footer() {
         >
           {/* Brand */}
           <div>
-            <Link href="/" style={{ textDecoration: "none", display: "inline-flex", alignItems: "center", gap: 12, marginBottom: 18 }}>
+            <Link
+              href="/"
+              aria-label="Digital Chautari home"
+              style={{ textDecoration: "none", display: "inline-flex", flexDirection: "column", lineHeight: 1, marginBottom: 20 }}
+            >
               <span
                 style={{
-                  width: 40,
-                  height: 40,
-                  borderRadius: 10,
-                  background: "linear-gradient(135deg, #0F9488 0%, #0B6F66 100%)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  color: "#fff",
                   fontFamily: "var(--font-sora)",
                   fontWeight: 800,
-                  fontSize: 16,
-                  flexShrink: 0,
+                  fontSize: 22,
+                  color: "#fff",
+                  letterSpacing: "-0.02em",
                 }}
               >
-                DC
+                Digital <span style={{ color: "var(--color-primary)" }}>Chautari</span>
               </span>
-              <span style={{ fontFamily: "var(--font-sora)", fontWeight: 700, fontSize: 16, color: "#fff" }}>
-                Digital Chautari
+              <span
+                style={{
+                  fontSize: 10.5,
+                  fontWeight: 600,
+                  color: "rgba(255,255,255,0.5)",
+                  marginTop: 6,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.12em",
+                }}
+              >
+                Ideas Meet Execution
               </span>
             </Link>
             <p style={{ fontSize: 14, lineHeight: 1.7, color: "rgba(255,255,255,0.6)", maxWidth: 280, marginBottom: 24 }}>
               A creative technology company bridging ideas and impact through digital marketing, content creation, and health-tech innovation in Kathmandu, Nepal.
             </p>
-            <div style={{ display: "flex", gap: 10 }}>
+            <div style={{ display: "flex", gap: 12 }}>
               {socials.map((social) => (
                 <a
                   key={social.label}
@@ -76,9 +82,9 @@ export default function Footer() {
                   aria-label={social.label}
                   className="social-link"
                   style={{
-                    width: 36,
-                    height: 36,
-                    borderRadius: 8,
+                    width: 46,
+                    height: 46,
+                    borderRadius: 10,
                     border: "1px solid var(--color-navy-border)",
                     display: "flex",
                     alignItems: "center",
