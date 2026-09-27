@@ -37,39 +37,29 @@ export default function Header() {
     >
       <div className="container-site" style={{ display: "flex", alignItems: "center", height: 68, gap: 32 }}>
         {/* Logo */}
-        <Link href="/" style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: 12, flexShrink: 0 }}>
-          <span
-            style={{
-              width: 40,
-              height: 40,
-              borderRadius: 10,
-              background: "linear-gradient(135deg, #0F9488 0%, #0B6F66 100%)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              color: "#fff",
-              fontFamily: "var(--font-sora)",
-              fontWeight: 800,
-              fontSize: 16,
-              letterSpacing: "-0.02em",
-              flexShrink: 0,
-            }}
-          >
-            DC
-          </span>
+        <Link href="/" aria-label="Digital Chautari home" style={{ textDecoration: "none", display: "flex", flexShrink: 0 }}>
           <span style={{ display: "flex", flexDirection: "column", lineHeight: 1 }}>
             <span
               style={{
                 fontFamily: "var(--font-sora)",
-                fontWeight: 700,
-                fontSize: 16,
+                fontWeight: 800,
+                fontSize: 20,
                 color: "var(--color-ink)",
-                letterSpacing: "-0.01em",
+                letterSpacing: "-0.02em",
               }}
             >
-              Digital Chautari
+              Digital <span style={{ color: "var(--color-primary)" }}>Chautari</span>
             </span>
-            <span style={{ fontSize: 11, color: "var(--color-muted)", fontWeight: 500, marginTop: 2 }}>
+            <span
+              style={{
+                fontSize: 10.5,
+                color: "var(--color-muted)",
+                fontWeight: 600,
+                marginTop: 4,
+                textTransform: "uppercase",
+                letterSpacing: "0.12em",
+              }}
+            >
               Ideas Meet Execution
             </span>
           </span>

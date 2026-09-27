@@ -1,4 +1,5 @@
-import Image, { type StaticImageData } from "next/image";
+import type { StaticImageData } from "next/image";
+import ParallaxImage from "@/components/ParallaxImage";
 
 interface DarkBannerProps {
   eyebrow?: string;
@@ -13,15 +14,7 @@ export default function DarkBanner({ eyebrow, title, subtitle, bgImage, children
     <section className={`section-dark section-py${bgImage ? " section-photo" : ""}`}>
       {bgImage && (
         <>
-          <Image
-            src={bgImage}
-            alt=""
-            aria-hidden
-            fill
-            placeholder="blur"
-            sizes="100vw"
-            className="section-photo-img"
-          />
+          <ParallaxImage src={bgImage} />
           <div className="section-photo-overlay" aria-hidden />
         </>
       )}

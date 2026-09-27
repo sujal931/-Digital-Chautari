@@ -445,17 +445,18 @@ textarea.input-field { resize: vertical; min-height: 120px; }
   transform: translateX(-50%);
   top: 0; bottom: 0;
   width: 2px;
-  background: var(--color-navy-border);
+  background: rgba(255,255,255,0.18);
 }
 .timeline-item {
   display: flex;
   align-items: flex-start;
-  gap: 28px;
+  gap: 72px;
   margin-bottom: 48px;
   position: relative;
 }
-.timeline-item:nth-child(odd) { flex-direction: row-reverse; }
-.timeline-item:nth-child(odd) .timeline-content { text-align: right; }
+/* Left items: text sits left of the line, aligned toward it. Right items mirror that. */
+.timeline-item.right { flex-direction: row-reverse; }
+.timeline-item.left .timeline-content { text-align: right; }
 .timeline-dot {
   position: absolute;
   left: 50%;
@@ -497,9 +498,9 @@ textarea.input-field { resize: vertical; min-height: 120px; }
 
   .timeline::before { left: 20px; transform: none; }
   .timeline-item,
-  .timeline-item:nth-child(odd) { flex-direction: column; padding-left: 48px; }
+  .timeline-item.right { flex-direction: column; padding-left: 48px; }
   .timeline-dot { left: 20px; transform: translateX(-50%); }
-  .timeline-item:nth-child(odd) .timeline-content { text-align: left; }
+  .timeline-item.left .timeline-content { text-align: left; }
   .timeline-spacer { display: none; }
 }
 
@@ -628,14 +629,23 @@ textarea.input-field { resize: vertical; min-height: 120px; }
 
 /* ─── Dark section with background photo ────────────────────────────────── */
 .section-photo { position: relative; overflow: hidden; isolation: isolate; }
-.section-photo-img { object-fit: cover; z-index: -2; filter: saturate(0.85); }
+.parallax-layer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -2;
+  will-change: transform;
+}
+.section-photo-img { object-fit: cover; filter: saturate(0.85); }
 .section-photo-overlay {
   position: absolute;
   inset: 0;
   z-index: -1;
   background:
     radial-gradient(ellipse at 50% 0%, rgba(15,148,136,0.18) 0%, transparent 60%),
-    linear-gradient(180deg, rgba(11,18,32,0.93) 0%, rgba(11,18,32,0.82) 50%, rgba(11,18,32,0.95) 100%);
+    linear-gradient(180deg, rgba(11,18,32,0.88) 0%, rgba(11,18,32,0.7) 50%, rgba(11,18,32,0.9) 100%);
 }
 .glass-tile {
   background: rgba(255,255,255,0.04);

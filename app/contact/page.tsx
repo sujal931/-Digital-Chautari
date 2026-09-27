@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import ContactForm from "@/components/ContactForm";
 import Reveal from "@/components/Reveal";
+import Hero from "@/components/Hero";
+import contactHero from "@/public/images/heroes/contact.jpg";
 import {
   Megaphone, Clapperboard, CodeXml, Handshake, MessagesSquare, MapPin, Mail, Phone, Clock,
   Map as MapIcon, CircleHelp, Timer, ClipboardList, TriangleAlert,
@@ -23,23 +25,17 @@ export default function ContactPage() {
   return (
     <>
       {/* ── Hero ─────────────────────────────────────────────────────── */}
-      <section className="hero-bg hero-py">
-        <div className="container-site">
-          <div style={{ maxWidth: 620, margin: "0 auto", textAlign: "center" }}>
-            <div className="pill-eyebrow" style={{ display: "inline-flex", marginBottom: 18 }}>
-              <MessagesSquare aria-hidden /> Get In Touch
-            </div>
-            <h1 className="h1" style={{ marginBottom: 18 }}>
-              Let&apos;s start a{" "}
-              <span className="gradient-text">conversation</span>
-            </h1>
-            <p className="body-md" style={{ fontSize: 17 }}>
-              Whether you have a project in mind, a question about our services, or just want to say
-              hello — our team is ready to listen and respond within 24 hours.
-            </p>
-          </div>
-        </div>
-      </section>
+      <Hero
+        eyebrow="Get In Touch"
+        eyebrowIcon={MessagesSquare}
+        titleLine1="Let's start a"
+        gradientWords="conversation"
+        lede="Whether you have a project in mind, a question about our services, or just want to say hello — our team is ready to listen and respond within 24 hours."
+        primaryBtn={{ label: "Send a Message →", href: "#message" }}
+        secondaryBtn={{ label: "Email Us", href: "mailto:hello@digitalchautari.com" }}
+        image={contactHero}
+        imageAlt="Person holding a smartphone next to an open laptop"
+      />
 
       {/* ── Contact Info Cards ─────────────────────────────────────── */}
       <section className="section-py-tight" style={{ borderBottom: "1px solid var(--color-line)" }}>
@@ -98,7 +94,7 @@ export default function ContactPage() {
       </section>
 
       {/* ── Main Contact Block ────────────────────────────────────────── */}
-      <section className="section-py" style={{ background: "rgba(15,148,136,0.03)", borderTop: "1px solid var(--color-line)" }}>
+      <section id="message" className="section-py" style={{ background: "rgba(15,148,136,0.03)", borderTop: "1px solid var(--color-line)", scrollMarginTop: 80 }}>
         <div className="container-site">
           <div
             style={{

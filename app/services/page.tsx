@@ -4,6 +4,12 @@ import Hero from "@/components/Hero";
 import PricingCard from "@/components/PricingCard";
 import DarkBanner from "@/components/DarkBanner";
 import Reveal from "@/components/Reveal";
+import TestimonialsSection from "@/components/TestimonialsSection";
+import servicesHero from "@/public/images/heroes/services.jpg";
+import teamMeetingBg from "@/public/images/backgrounds/team-meeting.jpg";
+import rajeshPhoto from "@/public/images/testimonials/rajesh-shrestha.jpg";
+import anishaPhoto from "@/public/images/testimonials/anisha-gurung.jpg";
+import sumanPhoto from "@/public/images/testimonials/suman-karki.jpg";
 import {
   Megaphone, Clapperboard, CodeXml, Search, Share2, Target, ChartColumn, Video, Image,
   PenLine, Mic, Globe, Smartphone, Server, ShieldCheck, ClipboardList, Stethoscope,
@@ -130,6 +136,8 @@ export default function ServicesPage() {
         lede="From building your brand's digital identity to engineering the platforms that power your business — Digital Chautari delivers end-to-end creative and technology services tailored to the Nepali market and beyond."
         primaryBtn={{ label: "Book a Consultation →", href: "/contact" }}
         secondaryBtn={{ label: "View Pricing", href: "#pricing" }}
+        image={servicesHero}
+        imageAlt="Team members working together on laptops around a shared desk"
       />
 
       {/* ── Service Categories ──────────────────────────────────────── */}
@@ -239,7 +247,7 @@ export default function ServicesPage() {
       </section>
 
       {/* ── Dark Why Work With Us ────────────────────────────────────── */}
-      <DarkBanner eyebrow="Our Advantage" title="Why work with us?">
+      <DarkBanner eyebrow="Our Advantage" title="Why work with us?" bgImage={teamMeetingBg}>
         <div className="grid-3">
           {[
             { icon: UserCheck, title: "Dedicated Project Manager", body: "A single point of contact who owns your project end-to-end and keeps things moving." },
@@ -261,6 +269,35 @@ export default function ServicesPage() {
           ))}
         </div>
       </DarkBanner>
+
+      {/* ── Client Reviews ──────────────────────────────────────────── */}
+      <TestimonialsSection
+        eyebrow="Client Reviews"
+        title="Trusted by growing brands"
+        items={[
+          {
+            quote: "The SEO and paid ads programme paid for itself in the second month. Our cost per lead dropped by half and the monthly reports are the clearest we've ever received from an agency.",
+            name: "Rajesh Shrestha",
+            title: "Managing Director",
+            company: "Summit Realty",
+            photo: rajeshPhoto,
+          },
+          {
+            quote: "They rebuilt our booking website and handled all our social content. Enquiries through the site have doubled, and we finally have one team that understands both the design and the tech.",
+            name: "Anisha Gurung",
+            title: "Owner",
+            company: "Pokhara Lakeside Stays",
+            photo: anishaPhoto,
+          },
+          {
+            quote: "Their engineers shipped our learning app on both iOS and Android in under three months. Two-week sprints meant we always knew exactly where things stood.",
+            name: "Suman Karki",
+            title: "Co-Founder",
+            company: "PadhaiHub",
+            photo: sumanPhoto,
+          },
+        ]}
+      />
 
       {/* ── Closing CTA ─────────────────────────────────────────────── */}
       <section className="section-py">

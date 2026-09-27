@@ -1,7 +1,20 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import DarkBanner from "@/components/DarkBanner";
+import Image from "next/image";
 import Reveal from "@/components/Reveal";
+import Hero from "@/components/Hero";
+import aboutHero from "@/public/images/heroes/about.jpg";
+import teamTrustBg from "@/public/images/backgrounds/team-trust.jpg";
+import himalayaBg from "@/public/images/backgrounds/himalaya-stupa.jpg";
+import ParallaxImage from "@/components/ParallaxImage";
+import founderPhoto from "@/public/images/team/founder-ceo.jpg";
+import cofounderPhoto from "@/public/images/team/cofounder-coo.jpg";
+import frontendPhoto from "@/public/images/team/frontend-dev.jpg";
+import backendPhoto from "@/public/images/team/backend-dev.jpg";
+import marketingPhoto from "@/public/images/team/marketing-lead.jpg";
+import salesPhoto from "@/public/images/team/sales-executive.jpg";
+import bdPhoto from "@/public/images/team/bd-officer.jpg";
 import {
   Users, Target, Compass, Heart, Sparkles, Award, Handshake, BadgeCheck, Lock, Globe, Network, Sprout,
 } from "lucide-react";
@@ -13,13 +26,13 @@ export const metadata: Metadata = {
 };
 
 const teamMembers = [
-  { role: "Founder & CEO", initials: "FC", bio: "Visionary leader driving Digital Chautari's mission to bridge ideas and digital impact across Nepal.", gradient: "linear-gradient(135deg, #0F9488, #0B6F66)" },
-  { role: "Co-Founder & COO", initials: "CO", bio: "Operations architect ensuring seamless project delivery across all three Digital Chautari ventures.", gradient: "linear-gradient(135deg, #E0A930, #c48a1a)" },
-  { role: "Front-End Developer", initials: "FD", bio: "Crafts pixel-perfect React interfaces that balance beautiful design with peak performance.", gradient: "linear-gradient(135deg, #7FAE3A, #5a8a1e)" },
-  { role: "Back-End Developer", initials: "BD", bio: "Architects scalable APIs and cloud infrastructure that power our products under heavy load.", gradient: "linear-gradient(135deg, #0B6F66, #0F9488)" },
-  { role: "Marketing Lead", initials: "ML", bio: "Orchestrates data-led campaigns across digital channels, turning reach into measurable revenue.", gradient: "linear-gradient(135deg, #0F9488, #7FAE3A)" },
-  { role: "Sales Executive", initials: "SE", bio: "Builds lasting client relationships through consultative selling and exceptional follow-through.", gradient: "linear-gradient(135deg, #E0A930, #0F9488)" },
-  { role: "Business Development Officer", initials: "BO", bio: "Identifies and cultivates strategic partnerships that expand Digital Chautari's footprint.", gradient: "linear-gradient(135deg, #7FAE3A, #E0A930)" },
+  { name: "Rohan Maharjan", role: "Founder & CEO", photo: founderPhoto, bio: "Visionary leader driving Digital Chautari's mission to bridge ideas and digital impact across Nepal.", gradient: "linear-gradient(135deg, #0F9488, #0B6F66)" },
+  { name: "Sneha Pradhan", role: "Co-Founder & COO", photo: cofounderPhoto, bio: "Operations architect ensuring seamless project delivery across all three Digital Chautari ventures.", gradient: "linear-gradient(135deg, #E0A930, #c48a1a)" },
+  { name: "Kiran Rai", role: "Front-End Developer", photo: frontendPhoto, bio: "Crafts pixel-perfect React interfaces that balance beautiful design with peak performance.", gradient: "linear-gradient(135deg, #7FAE3A, #5a8a1e)" },
+  { name: "Tenzing Lama", role: "Back-End Developer", photo: backendPhoto, bio: "Architects scalable APIs and cloud infrastructure that power our products under heavy load.", gradient: "linear-gradient(135deg, #0B6F66, #0F9488)" },
+  { name: "Prerana Joshi", role: "Marketing Lead", photo: marketingPhoto, bio: "Orchestrates data-led campaigns across digital channels, turning reach into measurable revenue.", gradient: "linear-gradient(135deg, #0F9488, #7FAE3A)" },
+  { name: "Nabin Bhandari", role: "Sales Executive", photo: salesPhoto, bio: "Builds lasting client relationships through consultative selling and exceptional follow-through.", gradient: "linear-gradient(135deg, #E0A930, #0F9488)" },
+  { name: "Asmita Koirala", role: "Business Development Officer", photo: bdPhoto, bio: "Identifies and cultivates strategic partnerships that expand Digital Chautari's footprint.", gradient: "linear-gradient(135deg, #7FAE3A, #E0A930)" },
 ];
 
 const timeline = [
@@ -33,23 +46,17 @@ export default function AboutPage() {
   return (
     <>
       {/* ── Hero ─────────────────────────────────────────────────────── */}
-      <section className="hero-bg hero-py">
-        <div className="container-site">
-          <div style={{ maxWidth: 660 }}>
-            <div className="pill-eyebrow" style={{ display: "inline-flex", marginBottom: 18 }}>
-              <Users aria-hidden /> Our Story
-            </div>
-            <h1 className="h1" style={{ marginBottom: 18 }}>
-              The people behind{" "}
-              <span className="gradient-text">Digital Chautari</span>
-            </h1>
-            <p className="body-md" style={{ fontSize: 17 }}>
-              We are a team of marketers, engineers, designers, and storytellers united by a single
-              belief: that every brand — big or small — deserves a world-class digital presence.
-            </p>
-          </div>
-        </div>
-      </section>
+      <Hero
+        eyebrow="Our Story"
+        eyebrowIcon={Users}
+        titleLine1="The people behind"
+        gradientWords="Digital Chautari"
+        lede="We are a team of marketers, engineers, designers, and storytellers united by a single belief: that every brand — big or small — deserves a world-class digital presence."
+        primaryBtn={{ label: "Meet the Team →", href: "#team" }}
+        secondaryBtn={{ label: "Get in Touch", href: "/contact" }}
+        image={aboutHero}
+        imageAlt="Digital Chautari team members laughing together while working on laptops"
+      />
 
       {/* ── Story Block ─────────────────────────────────────────────── */}
       <section className="section-py">
@@ -192,7 +199,7 @@ export default function AboutPage() {
       </section>
 
       {/* ── Dark Quality ─────────────────────────────────────────────── */}
-      <DarkBanner eyebrow="Our Standards" title="Committed to quality & trust">
+      <DarkBanner eyebrow="Our Standards" title="Committed to quality & trust" bgImage={teamTrustBg}>
         <div className="grid-4">
           {[
             { icon: BadgeCheck, title: "ISO 9001 Ready", body: "Our processes are designed to meet international quality management standards." },
@@ -214,7 +221,7 @@ export default function AboutPage() {
       </DarkBanner>
 
       {/* ── Team ─────────────────────────────────────────────────────── */}
-      <section className="section-py">
+      <section id="team" className="section-py" style={{ scrollMarginTop: 80 }}>
         <div className="container-site">
           <div style={{ textAlign: "center", marginBottom: 40 }}>
             <span className="pill-eyebrow" style={{ display: "inline-flex", marginBottom: 14 }}>The People</span>
@@ -226,27 +233,47 @@ export default function AboutPage() {
 
           <div className="grid-4" style={{ gap: 20 }}>
             {teamMembers.map((member, i) => (
-              <Reveal key={member.role} delay={i * 60}>
+              <Reveal key={member.name} delay={i * 60}>
                 <div className="card" style={{ textAlign: "center", padding: "28px 20px" }}>
                   <div
                     style={{
-                      width: 60,
-                      height: 60,
+                      width: 84,
+                      height: 84,
                       borderRadius: "50%",
+                      padding: 3,
                       background: member.gradient,
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      color: "#fff",
-                      fontFamily: "var(--font-sora)",
-                      fontWeight: 800,
-                      fontSize: 18,
-                      margin: "0 auto 14px",
+                      margin: "0 auto 16px",
                     }}
                   >
-                    {member.initials}
+                    <Image
+                      src={member.photo}
+                      alt={`Portrait of ${member.name}, ${member.role}`}
+                      width={78}
+                      height={78}
+                      placeholder="blur"
+                      style={{
+                        width: 78,
+                        height: 78,
+                        borderRadius: "50%",
+                        objectFit: "cover",
+                        border: "3px solid #fff",
+                        display: "block",
+                      }}
+                    />
                   </div>
-                  <h3 className="h3" style={{ fontSize: 14, marginBottom: 8 }}>{member.role}</h3>
+                  <h3 className="h3" style={{ fontSize: 16, marginBottom: 4 }}>{member.name}</h3>
+                  <div
+                    style={{
+                      fontSize: 11,
+                      fontWeight: 600,
+                      textTransform: "uppercase",
+                      letterSpacing: "0.06em",
+                      color: "var(--color-primary)",
+                      marginBottom: 10,
+                    }}
+                  >
+                    {member.role}
+                  </div>
                   <p className="body-sm" style={{ fontSize: 12, lineHeight: 1.6 }}>{member.bio}</p>
                 </div>
               </Reveal>
@@ -256,8 +283,10 @@ export default function AboutPage() {
       </section>
 
       {/* ── Dark Timeline ─────────────────────────────────────────────── */}
-      <section className="section-dark section-py">
-        <div className="container-site">
+      <section className="section-dark section-py section-photo">
+        <ParallaxImage src={himalayaBg} />
+        <div className="section-photo-overlay" aria-hidden />
+        <div className="container-site" style={{ position: "relative", zIndex: 1 }}>
           <div style={{ textAlign: "center", marginBottom: 56 }}>
             <span className="pill-eyebrow-gold" style={{ display: "inline-flex", marginBottom: 14 }}>
               Our Journey
@@ -267,27 +296,14 @@ export default function AboutPage() {
 
           <div className="timeline" style={{ maxWidth: 800, margin: "0 auto" }}>
             {timeline.map((item, i) => (
-              <div key={item.title} className="timeline-item">
+              <div key={item.title} className={`timeline-item ${i % 2 === 0 ? "left" : "right"}`}>
                 <div className="timeline-dot" />
-                {i % 2 === 0 ? (
-                  <>
-                    <div className="timeline-content">
-                      <span className="timeline-year">{item.year}</span>
-                      <h3 className="h3" style={{ color: "#fff", marginBottom: 8 }}>{item.title}</h3>
-                      <p style={{ fontSize: 14, color: "rgba(255,255,255,0.65)", lineHeight: 1.7 }}>{item.description}</p>
-                    </div>
-                    <div className="timeline-spacer" />
-                  </>
-                ) : (
-                  <>
-                    <div className="timeline-spacer" />
-                    <div className="timeline-content">
-                      <span className="timeline-year">{item.year}</span>
-                      <h3 className="h3" style={{ color: "#fff", marginBottom: 8 }}>{item.title}</h3>
-                      <p style={{ fontSize: 14, color: "rgba(255,255,255,0.65)", lineHeight: 1.7 }}>{item.description}</p>
-                    </div>
-                  </>
-                )}
+                <div className="timeline-content">
+                  <span className="timeline-year">{item.year}</span>
+                  <h3 className="h3" style={{ color: "#fff", marginBottom: 8 }}>{item.title}</h3>
+                  <p style={{ fontSize: 14, color: "rgba(255,255,255,0.72)", lineHeight: 1.7 }}>{item.description}</p>
+                </div>
+                <div className="timeline-spacer" />
               </div>
             ))}
           </div>

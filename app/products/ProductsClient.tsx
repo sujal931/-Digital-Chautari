@@ -3,6 +3,14 @@
 import { useState } from "react";
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
+import Hero from "@/components/Hero";
+import TestimonialsSection from "@/components/TestimonialsSection";
+import productsHero from "@/public/images/heroes/products.jpg";
+import ParallaxImage from "@/components/ParallaxImage";
+import homePhysioBg from "@/public/images/backgrounds/home-physio.jpg";
+import rameshPhoto from "@/public/images/testimonials/ramesh-adhikari.jpg";
+import nishaPhoto from "@/public/images/testimonials/nisha-tamang.jpg";
+import arjunPhoto from "@/public/images/testimonials/dr-arjun-sharma.jpg";
 import {
   Leaf, Clapperboard, HeartPulse, Megaphone, Video, Activity, Layers, Check,
   MapPin, CalendarCheck, TrendingUp,
@@ -74,26 +82,20 @@ export default function ProductsPageClient() {
   return (
     <>
       {/* ── Hero ───────────────────────────────────────────────────── */}
-      <section className="hero-bg hero-py">
-        <div className="container-site">
-          <div style={{ maxWidth: 680, margin: "0 auto", textAlign: "center" }}>
-            <div className="pill-eyebrow" style={{ display: "inline-flex", marginBottom: 18 }}>
-              <Layers aria-hidden /> Our Ventures
-            </div>
-            <h1 className="h1" style={{ marginBottom: 18 }}>
-              Three ventures,{" "}
-              <span className="gradient-text">one vision</span>
-            </h1>
-            <p className="body-md" style={{ fontSize: 17, maxWidth: 560, margin: "0 auto" }}>
-              Each product tackles a distinct problem in the Nepali and broader market. Together they
-              form a vertically-integrated creative technology ecosystem.
-            </p>
-          </div>
-        </div>
-      </section>
+      <Hero
+        eyebrow="Our Ventures"
+        eyebrowIcon={Layers}
+        titleLine1="Three ventures,"
+        gradientWords="one vision"
+        lede="Each product tackles a distinct problem in the Nepali and broader market. Together they form a vertically-integrated creative technology ecosystem."
+        primaryBtn={{ label: "Explore Products →", href: "#products" }}
+        secondaryBtn={{ label: "Partner With Us", href: "/contact" }}
+        image={productsHero}
+        imageAlt="Smartphone on a desk displaying a mobile app interface"
+      />
 
       {/* ── Tabbed Switcher ────────────────────────────────────────── */}
-      <section className="section-py">
+      <section id="products" className="section-py" style={{ scrollMarginTop: 80 }}>
         <div className="container-site">
           {/* Tabs */}
           <div role="tablist" style={{ display: "flex", justifyContent: "center", gap: 10, marginBottom: 48, flexWrap: "wrap" }}>
@@ -270,8 +272,10 @@ export default function ProductsPageClient() {
       </section>
 
       {/* ── Dark Spotlight — Physio@Home ─────────────────────────── */}
-      <section className="section-dark section-py">
-        <div className="container-site" style={{ textAlign: "center" }}>
+      <section className="section-dark section-py section-photo">
+        <ParallaxImage src={homePhysioBg} />
+        <div className="section-photo-overlay" aria-hidden />
+        <div className="container-site" style={{ textAlign: "center", position: "relative", zIndex: 1 }}>
           <span className="pill-eyebrow-gold" style={{ display: "inline-flex", marginBottom: 20 }}>
             <HeartPulse aria-hidden /> Health-Tech Spotlight
           </span>
@@ -306,6 +310,35 @@ export default function ProductsPageClient() {
           </Link>
         </div>
       </section>
+
+      {/* ── Product Reviews ─────────────────────────────────────────── */}
+      <TestimonialsSection
+        eyebrow="Reviews"
+        title="What people say about our products"
+        items={[
+          {
+            quote: "Eco Creative rebuilt our brand voice from scratch. Our community on Instagram grew fourfold in six months, and the campaigns actually reflect what our cooperative stands for.",
+            name: "Ramesh Adhikari",
+            title: "Chairperson",
+            company: "Ilam Organic Tea Co-op",
+            photo: rameshPhoto,
+          },
+          {
+            quote: "One Studio turned a single day of shooting into a month of reels, stories, and ads. The same-day turnaround on edits is something no other studio in Kathmandu offered us.",
+            name: "Nisha Tamang",
+            title: "Brand Manager",
+            company: "Thamel Threads",
+            photo: nishaPhoto,
+          },
+          {
+            quote: "I refer post-surgery patients to Physio@Home every week. Booking is effortless, the physios are properly certified, and the progress reports make follow-ups much easier for me.",
+            name: "Dr. Arjun Sharma",
+            title: "Orthopaedic Surgeon",
+            company: "Kathmandu Ortho Clinic",
+            photo: arjunPhoto,
+          },
+        ]}
+      />
 
       {/* ── Closing CTA ─────────────────────────────────────────────── */}
       <section className="section-py">
